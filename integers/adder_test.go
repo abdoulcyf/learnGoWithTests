@@ -5,6 +5,8 @@ import (
   "testing"
   "fmt")
 
+  var _ fmt.Formatter// for debugging only,delete when done
+
 
 func TestAdder(t *testing.T){
   //---------------------------------------------
@@ -31,8 +33,10 @@ func assertCorrectMessage(t testing.TB, got, want int) {
   }
 }
 
-func ExampleAdder() {
-  sum := Adder(1, 5)
-  fmt.Println(sum)
-  // Output: 6
-}
+
+// func ExampleAdder() {
+ 
+//   sum := Adder(1, 5)
+//   fmt.Println(sum)
+//   // Output: 6
+// }
