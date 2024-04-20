@@ -8,25 +8,25 @@ import (
 
 var _ fmt.Formatter // for debugging only,delete when done
 
-func TestSumAll(t *testing.T) {
-	t.Run("return sum of all values", func(t *testing.T) {
-		got := SumAll([]int{1, 2}, []int{0, 9})
-		want := []int{3, 9}
+func TestSumTails(t *testing.T) {
 
-		assertSumAll(t, got, want)
-	})
-	//-------------------------------------------------------
-	
 	t.Run("return sum of all values except the tails", func(t *testing.T) {
-		got := SumAll([]int{1, 2}, []int{5, 9})
+		got := sumTails([]int{1, 2}, []int{5, 9})
 		want := []int{2, 9}
 
-		assertSumAll(t, got, want)
+		assertSumATails(t, got, want)
 	})
 
+	//-------------------------------------------------------
+	t.Run("Safely sum empy slices", func(t *testing.T) {
+		got := sumTails([]int{}, []int{5, 9})
+		want := []int{0, 9}
+
+		assertSumATails(t, got, want)
+	})
 }
 
-func assertSumAll(t testing.TB, got, want []int) {
+func assertSumATails(t testing.TB, got, want []int) {
 	t.Helper()
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got %v want %v", got, want)
