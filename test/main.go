@@ -1,10 +1,10 @@
-package mains
+package main
 
 import (
-	"github.com/ediallocyf/learnGoWithTest/arrays_and_slices"
+	"github.com/ediallocyf/learnGoWithTest/structs_methods_interfaces"
 )
 
 func main(){
 
-	areas := &arrays_and_slices.Rectangle()
+	areas := &structs_methods_interfaces.Rectangle()
 }
