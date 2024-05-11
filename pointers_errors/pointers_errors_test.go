@@ -1,7 +1,6 @@
 package pointers_errors
 
 import (
-	"errors"
 	"testing"
 )
 
@@ -18,16 +17,16 @@ func TestWallet(t *testing.T) {
 		want := Bitcoin(10)
 		assertWallet(t, got, want)
 	})
-	//-----------------withdraw------------------------
+	//-----------------withdraw with funds------------------------
 	t.Run("withdraw with funds", func(t *testing.T) {
 		//---set up-------------------------
 		wallet := Wallet{balance: Bitcoin(20)}
-		err := wallet.Withdraw(Bitcoin(30))
+		err := wallet.Withdraw(Bitcoin(15))
 		assertNoError(t, err)
 		got := wallet.Balance()
 
 		//------------exp----------------
-		assertWallet(t, got, Bitcoin(10))
+		assertWallet(t, got, Bitcoin(5))
 	})
 
 	//-----------------withdraw insufficient funds------------------------
@@ -59,7 +58,7 @@ func assertError(t testing.TB, got, want error) {
 		t.Fatal("wanted an error but did not get one")
 	}
 
-	if !errors.Is(got, want) {
+	if got != want {
 		t.Errorf("got %q, want %q", got, want)
 	}
 
